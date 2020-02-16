@@ -2,8 +2,7 @@ package learnSpringApp.model;
 
 import java.util.Objects;
 
-public class Student {
-    int id;
+public class Student extends Entity{
     String cnp;
     String name;
 
@@ -14,14 +13,6 @@ public class Student {
         this.id = id;
         this.cnp = cnp;
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCnp() {

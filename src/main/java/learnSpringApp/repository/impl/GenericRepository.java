@@ -1,17 +1,17 @@
 package learnSpringApp.repository.impl;
 
 import learnSpringApp.repository.BaseRepository;
+import learnSpringApp.model.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public abstract class DefaultBaseRepository <T> implements BaseRepository <T> {
+public class GenericRepository<T extends Entity> implements BaseRepository<T> {
     protected List<T> entityList = new ArrayList<>();
 
     public T findById(int id) {
         return entityList.stream()
-                .filter((s) -> getId(s) == id)
+                .filter((s) -> s.getId() == id)
                 .findFirst()
                 .orElse(null);
     }

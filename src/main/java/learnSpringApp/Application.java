@@ -1,7 +1,6 @@
 package learnSpringApp;
 
 import learnSpringApp.config.ApplicationConfiguration;
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Application {
