@@ -1,9 +1,18 @@
 package learnSpringApp.model;
 
-import java.util.Objects;
+import javax.persistence.*;
 
-public class School extends Entity {
+@Entity
+public class School {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+
+    @Column
     String address;
+
+    @Column
     String name;
 
     public School() {
@@ -29,18 +38,5 @@ public class School extends Entity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        School school = (School) o;
-        return id == school.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }
