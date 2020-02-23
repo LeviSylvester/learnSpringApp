@@ -12,7 +12,7 @@
 
 <div class="container my-5">
     <div class="row">
-        <form action="#" th:action="@{/edit/}" th:object="${student}" method="post">
+        <form action="#" th:action="@{/student/edit/}" th:object="${student}" method="post">
             <input type="hidden" th:field="*{id}"/>
             <div class="col-md-6">
                 <label for="firstName">First Name</label>
