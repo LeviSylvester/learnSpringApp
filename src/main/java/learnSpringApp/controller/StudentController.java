@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/student")
 public class StudentController {
 
     private final StudentRepository studentRepository;
@@ -21,17 +22,10 @@ public class StudentController {
         this.studentRepository = studentRepository;
     }
 
-    @GetMapping("/")
-    public String getIndex(Model model) {
-        Iterable<Student> students = studentRepository.findAll();
-        model.addAttribute("students", students);
-        return "index";
-    }
-
     @GetMapping("/add/")
     public String getAddStudentView(Model model) {
         model.addAttribute("student", new Student());
-        return "addStudent.html";
+        return "addStudent";
     }
 
     @PostMapping("/add/")
