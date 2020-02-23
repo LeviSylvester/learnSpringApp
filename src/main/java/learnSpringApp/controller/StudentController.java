@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -34,7 +35,10 @@ public class StudentController {
     }
 
     @PostMapping("/add/")
-    public String processAddStudentView(Student student) {
+    public String processAddStudentView(@Valid Student student, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "addStudent";
+        }
         studentRepository.save(student);
         return "redirect:/";
     }
@@ -52,7 +56,10 @@ public class StudentController {
     }
 
     @PostMapping("/edit/")
-    public String processEditStudentView(Student student) {
+    public String processEditStudentView(@Valid Student student, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "editStudent";
+        }
         studentRepository.save(student);
         return "redirect:/";
     }

@@ -16,10 +16,32 @@
             <div class="col-md-6">
                 <label for="firstName">First Name</label>
                 <input id="firstName" th:field="*{firstName}" type="text" placeholder="First name">
+                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></span>
             </div>
             <div class="col-md-6">
                 <label for="lastName">Last Name</label>
                 <input id="lastName" th:field="*{lastName}" type="text" placeholder="Last name">
+                <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="cnp">CNP</label>
+                <input id="cnp" th:field="*{cnp}" type="text" placeholder="cnp">
+                <span th:if="${#fields.hasErrors('cnp')}" th:errors="*{cnp}" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="email">E-mail</label>
+                <input id="email" th:field="*{email}" type="text" placeholder="email">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="gender">Gender</label>
+                <input id="gender" th:field="*{gender}" type="text" placeholder="gender">
+                <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="age">Age</label>
+                <input id="age" th:field="*{age}" type="number" placeholder="age">
+                <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="text-danger"></span>
             </div>
             <div class="col-md-6">
                 <input type="submit" value="Add student">

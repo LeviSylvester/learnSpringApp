@@ -1,6 +1,7 @@
 package learnSpringApp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
@@ -11,22 +12,33 @@ public class Student {
     private Long id;
 
     @Column
+    @Size(message = "CNP must be 13 digits")
+    @Digits(integer = 13, fraction = 0, message = "CNP must be 13 digits")
     private String cnp;
 
     @Column
+    @NotBlank(message = "First name is mandatory")
     private String firstName;
 
     @Column
+    @NotBlank(message = "Last name is mandatory")
     private String lastName;
 
     @Column
+    @Email(message = "Email must be a valid email")
+    @NotBlank(message = "Email must not be empty")
     private String email;
 
     @Column
+    @Size(message = "Gender must be exactly one character")
+    @Digits(integer = 1, fraction = 0, message = "Gender must be exactly one character")
     private String gender;
 
     @Column
-    private int age;
+    @Min(value = 1, message = "Age has to be at least 1")
+    @Max(value = 130, message = "Age has to be at most 130")
+    @NotNull(message = "Age has to be between 1 and 130")
+    private Integer age;
 
     public Student() {
     }
@@ -79,11 +91,11 @@ public class Student {
         this.gender = gender;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -97,7 +109,7 @@ public class Student {
         private String lastName;
         private String email;
         private String gender;
-        private int age;
+        private Integer age;
 
         public Builder cnp(String cnp) {
             this.cnp = cnp;
@@ -124,7 +136,7 @@ public class Student {
             return this;
         }
 
-        public Builder age(int age) {
+        public Builder age(Integer age) {
             this.age = age;
             return this;
         }
