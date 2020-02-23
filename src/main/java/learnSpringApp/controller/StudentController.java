@@ -6,8 +6,9 @@ import org.springframework.stereotype.Controller;
 import learnSpringApp.repository.StudentRepository;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 public class StudentController {
@@ -38,6 +39,32 @@ public class StudentController {
         return "redirect:/";
     }
 
+    @GetMapping("edit/{id}/")
+    public String showEditStudentView(@PathVariable Long id, Model model) {
+        Optional<Student> student = studentRepository.findById(id);
+        model.addAttribute("student", student);
+        if (!student.isPresent()) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("student", student.get());
+        return "editStudent";
+    }
+
+    @PostMapping("/edit/")
+    public String processEditStudentView(Student student) {
+        studentRepository.save(student);
+        return "redirect:/";
+    }
+
+//    @RequestMapping(path = "/delete/{id}", method = RequestMethod.GET)
+
+    @GetMapping("/delete/{id}/")
+    public String processDeleteStudent(@PathVariable Long id) {
+        studentRepository.deleteById(id);
+        return "redirect:/";
+    }
+
 
 //    @GetMapping()
 //
@@ -51,16 +78,7 @@ public class StudentController {
 //
 //    }
 //
-//    @GetMapping("edit/{id}")
-//    public String showUpdateForm(@PathVariable long id, Model model) {
-//        if(result.hasErrors()){
-//            user.setId(id);
-//            return "user-edit";
-//        }
-//
-//        userRepository.save(user);
-//        model.addAttribute("users", userRepository.findAll());
-//    }
+
 //
 //    @PostMapping()
 }
