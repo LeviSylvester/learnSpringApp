@@ -30,8 +30,7 @@ public class Student {
     private String email;
 
     @Column
-    @Size(message = "Gender must be exactly one character")
-    @Digits(integer = 1, fraction = 0, message = "Gender must be exactly one character")
+    @Pattern(regexp = "[mMfF]", message = "Gender must be m or f case insensitive")
     private String gender;
 
     @Column

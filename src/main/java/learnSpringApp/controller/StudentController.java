@@ -71,21 +71,4 @@ public class StudentController {
         studentRepository.deleteById(id);
         return "redirect:/";
     }
-
-
-//    @GetMapping()
-//
-//    @PostMapping("/adduser")
-//    public String addUser(@Valid User user, BindingResult result, Model model){
-//        if(result.hasErrors()){
-//            return "user-add";
-//        }
-//
-//        userRepository.save(user);
-//
-//    }
-//
-
-//
-//    @PostMapping()
 }

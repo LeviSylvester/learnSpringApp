@@ -15,12 +15,12 @@
         <form action="#" th:action="@{/add/}" th:object="${student}" method="post">
             <div class="col-md-6">
                 <label for="firstName">First Name</label>
-                <input id="firstName" th:field="*{firstName}" type="text" placeholder="First name">
+                <input id="firstName" th:field="*{firstName}" type="text" placeholder="First name"><br>
                 <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger"></span>
             </div>
             <div class="col-md-6">
                 <label for="lastName">Last Name</label>
-                <input id="lastName" th:field="*{lastName}" type="text" placeholder="Last name">
+                <input id="lastName" th:field="*{lastName}" type="text" placeholder="Last name"><br>
                 <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger"></span>
             </div>
             <div class="col-md-6">
