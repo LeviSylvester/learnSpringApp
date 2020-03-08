@@ -101,4 +101,9 @@ public class School {
     public int hashCode() {
         return Objects.hash(id, address, name);
     }
+
+    @Override
+    public String toString() {
+        return "[id=" + id + " address=" + address + " name=" + name + "]";
+    }
 }
